@@ -13,14 +13,12 @@ public class VolumeChanger : MonoBehaviour
     private float _minVolume = -80f;
     private float _oldMasterVolume;
 
-    private float ConvertToVolume(float value) => Mathf.Log10(value) * 20f;
-
     public void ChangeBackgroundVolume(float value)
     {
         ChangeVolume(BackgroungVolumeParameter, value);
     }
 
-    public void ChangeGlobalValue(float value)
+    public void ChangeGlobalVolume(float value)
     {
         if (_isMuted)
         {
@@ -32,7 +30,7 @@ public class VolumeChanger : MonoBehaviour
         }
     }
 
-    public void ChangeEffectsValue(float value)
+    public void ChangeEffectsVolume(float value)
     {
         ChangeVolume(EffectsVolumeParameter, value);
     }
@@ -51,6 +49,8 @@ public class VolumeChanger : MonoBehaviour
 
         _isMuted = !_isMuted;
     }
+
+    private float ConvertToVolume(float value) => Mathf.Log10(value) * 20f;
 
     private void ChangeVolume(string volumeParameter, float value)
     {
